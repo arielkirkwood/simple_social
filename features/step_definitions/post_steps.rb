@@ -1,9 +1,9 @@
-Given (/an? (un)?queued post/) do |queued|
+Given(/an? (un)?queued post/) do |queued|
   @post = queued ? FactoryGirl.create(:queued_post) : FactoryGirl.create(:unqueued_post)
 end
 
-When(/^a user queues the post$/) do
-  @post.queue
+When(/^a user adds the post to the queue$/) do
+  @post.enqueue
 end
 
 Then(/^the post should be queued$/) do

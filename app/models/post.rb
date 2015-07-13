@@ -3,8 +3,8 @@ class Post < ActiveRecord::Base
     where.not(queue_position: nil).order(:queue_position)
   end
 
-  def queue
-    self.queue_position = 0
+  def enqueue
+    self.queue_position = Post.queue.length + 1
   end
 
   def queued?

@@ -1,8 +1,8 @@
 Feature: Queueing Posts
 
-  Scenario: Queue a post
+  Scenario: Add post to queue
     Given an unqueued post
-    When a user queues the post
+    When a user adds the post to the queue
     Then the post should be queued
     And it should be ordered last in the queue
 
