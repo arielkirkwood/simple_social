@@ -7,6 +7,10 @@ class Post < ActiveRecord::Base
     self.queue_position = Post.queue.length + 1
   end
 
+  def dequeue
+    self.queue_position = nil
+  end
+
   def queued?
     !self.queue_position.nil?
   end

@@ -6,8 +6,12 @@ When(/^a user adds the post to the queue$/) do
   @post.enqueue
 end
 
-Then(/^the post should be queued$/) do
-  assert @post.queued?
+When(/^a user removes a post from the queue$/) do
+  @post.dequeue
+end
+
+Then(/^the post should( not)? be queued$/) do |negate|
+  negate ? refute(@post.queued?) : assert(@post.queued?)
 end
 
 Then(/^it should be ordered last in the queue$/) do
