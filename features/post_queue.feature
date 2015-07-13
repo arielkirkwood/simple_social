@@ -1,13 +1,12 @@
-Feature: Managing a Post Queue
+Feature: Queueing Posts
 
-  Scenario: Add post to post queue
-    Given a post
-    And a post queue
-    When a user adds it to the post queue
-    Then the post queue should include the post
-    And it should be ordered last in the post queue
+  Scenario: Queue a post
+    Given an unqueued post
+    When a user queues the post
+    Then the post should be queued
+    And it should be ordered last in the queue
 
-  Scenario: Remove post from post queue
-    Given a post queue with at least one post
-    When a user removes a post from the post queue
-    Then the post queue should no longer include the post
+  Scenario: Remove post from queue
+    Given a queued post
+    When a user removes a post from the queue
+    Then the post should not be queued
