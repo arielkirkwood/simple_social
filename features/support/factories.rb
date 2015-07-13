@@ -5,7 +5,7 @@ FactoryGirl.define do
     text 'Hello world'
 
     trait :queued do
-      sequence(:queue_position, 0)
+      sequence(:queue_position)
     end
 
     trait :unqueued do
