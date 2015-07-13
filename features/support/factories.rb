@@ -1,11 +1,11 @@
 require 'factory_girl'
 
 FactoryGirl.define do
-  factory :post do |f|
-    f.text 'Hello world'
+  factory :post do
+    text 'Hello world'
   end
 
-  # factory :queue do |f|
-  #   f.username 'testuser'
-  # end
+  factory :post_queue do
+    post
+  end
 end
