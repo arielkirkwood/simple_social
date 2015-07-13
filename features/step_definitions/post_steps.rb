@@ -1,3 +1,3 @@
 Given (/an? (un)?queued post/) do |queued|
-  FactoryGirl.create(:post)
+  queued ? FactoryGirl.create(:queued_post) : FactoryGirl.create(:unqueued_post)
 end

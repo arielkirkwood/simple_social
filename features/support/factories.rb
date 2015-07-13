@@ -1,10 +1,18 @@
 require 'factory_girl'
 
 FactoryGirl.define do
-  sequence(:queue_position)
-
   factory :post do
     text 'Hello world'
-    queue_position
+
+    trait :queued do
+      sequence(:queue_position, 0)
+    end
+
+    trait :unqueued do
+      queue_position nil
+    end
+
+    factory :queued_post, traits: [:queued]
+    factory :unqueued_post, traits: [:unqueued]
   end
 end
