@@ -10,3 +10,6 @@ Then(/^the post should be queued$/) do
   assert @post.queued?
 end
 
+Then(/^it should be ordered last in the queue$/) do
+  assert_equal @post, Post.queue.last
+end
