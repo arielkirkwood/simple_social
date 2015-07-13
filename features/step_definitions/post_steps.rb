@@ -1,3 +1,12 @@
 Given (/an? (un)?queued post/) do |queued|
-  queued ? FactoryGirl.create(:queued_post) : FactoryGirl.create(:unqueued_post)
+  @post = queued ? FactoryGirl.create(:queued_post) : FactoryGirl.create(:unqueued_post)
 end
+
+When(/^a user queues the post$/) do
+  @post.queue
+end
+
+Then(/^the post should be queued$/) do
+  assert @post.queued?
+end
+
