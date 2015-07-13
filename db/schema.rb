@@ -11,19 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713175550) do
+ActiveRecord::Schema.define(version: 20150713004430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "post_queues", force: :cascade do |t|
-    t.integer  "post_id"
-    t.integer  "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "post_queues", ["post_id"], name: "index_post_queues_on_post_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "text"
@@ -31,5 +22,4 @@ ActiveRecord::Schema.define(version: 20150713175550) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "post_queues", "posts"
 end
