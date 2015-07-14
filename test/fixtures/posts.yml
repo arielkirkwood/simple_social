@@ -1,12 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-unqueued:
-  text: Hello World
-
-queued_first:
-  text: Goodbye World
-  queue_position: 1
-
-queued_second:
-  text: Goodbye World
-  queue_position: 2
