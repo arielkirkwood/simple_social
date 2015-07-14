@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  validates :text,  presence: true
+
   def self.queue
     where.not(queue_position: nil).order(:queue_position)
   end
