@@ -1,4 +1,7 @@
 Feature: Queueing Posts
+  In order to spend less time worrying about what to post and when
+  As a social media manager
+  I want to be able to add posts to a queue for scheduled publishing
 
   Scenario: Add post to queue
     Given an unqueued post
