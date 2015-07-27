@@ -3,6 +3,7 @@ require 'test_helper'
 class PostsControllerTest < ActionController::TestCase
   setup do
     @post = Post.new(text: "Hello World")
+    @saved_post = Post.create!(text: "Hello World")
   end
 
   test "should get index" do
@@ -25,23 +26,23 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should show post" do
-    get :show, id: @post
+    get :show, id: @saved_post
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @post
+    get :edit, id: @saved_post
     assert_response :success
   end
 
   test "should update post" do
-    patch :update, id: @post, post: { queue_position: @post.queue_position, text: @post.text }
+    patch :update, id: @saved_post, post: { queue_position: @saved_post.queue_position, text: @saved_post.text }
     assert_redirected_to post_path(assigns(:post))
   end
 
   test "should destroy post" do
     assert_difference('Post.count', -1) do
-      delete :destroy, id: @post
+      delete :destroy, id: @saved_post
     end
 
     assert_redirected_to posts_path
