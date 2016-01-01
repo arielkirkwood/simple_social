@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
+  include QueueableTest
+
   def setup
-    @post = Post.new(text: "Hello World")
+    @post = @model = Post.new(text: "Hello World")
   end
 
   test 'should be valid' do
