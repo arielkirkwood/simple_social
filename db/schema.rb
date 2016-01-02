@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20151231191833) do
   create_table "queueings", force: :cascade do |t|
     t.integer  "queueable_id"
     t.string   "queueable_type"
-    t.integer  "queue_position"
+    t.integer  "queue_position", null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
