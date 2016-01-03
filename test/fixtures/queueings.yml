@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# no fixtures needed at the moment
+# one:
+#   queueable_id: 
+#   queueable_type: Queueable
+#   queue_position: 1
+
+# two:
+#   queueable_id: 
+#   queueable_type: Queueable
+#   queue_position: 1
