@@ -1,1 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+hello_world:
+  text: Hello World
+
+follow_somaaa_studios:
+  text: Follow Somaaa Studios on Twitter!
