@@ -21,5 +21,14 @@ module QueueableTest
 
       assert_includes queued_items, @model, "model was not queued"
     end
+
+    test 'should destroy queueings when model is destroyed' do
+      @model.save
+      @model.enqueue
+      queueings = @model.queueings
+      @model.destroy
+
+      assert_empty queueings
+    end
   end
 end

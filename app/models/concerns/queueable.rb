@@ -2,7 +2,7 @@ module Queueable
   extend ActiveSupport::Concern
 
   included do
-    has_many :queueings, as: :queueable
+    has_many :queueings, as: :queueable, dependent: :destroy
 
     def enqueue
       queueings.create
