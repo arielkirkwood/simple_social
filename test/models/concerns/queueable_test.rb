@@ -22,6 +22,26 @@ module QueueableTest
       assert_includes queued_items, @model, "model was not queued"
     end
 
+    test 'dequeues a saved model' do
+      @model.save
+      @model.enqueue
+      @model.dequeue
+      queued_items = Queueing.all.map { |queueing| queueing.queueable }
+
+      refute_includes queued_items, @model, "model was still queued"
+    end
+
+    test 'knows if a model is queued' do
+      @model.save
+      refute @model.queued?
+
+      @model.enqueue
+      assert @model.queued?
+
+      @model.dequeue
+      refute @model.queued?
+    end
+
     test 'should destroy queueings when model is destroyed' do
       @model.save
       @model.enqueue
