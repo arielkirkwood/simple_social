@@ -13,6 +13,7 @@ class PostTest < ActiveSupport::TestCase
 
   test 'text should be present' do
     @post.text = '     '
+
     refute @post.valid?
   end
 end
