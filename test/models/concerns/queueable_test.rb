@@ -17,18 +17,18 @@ module QueueableTest
     test 'enqueues a saved model' do
       @model.save
       @model.enqueue
-      queued_items = Queueing.all.map { |queueing| queueing.queueable }
+      queued_models = Queueing.all.map { |queueing| queueing.queueable }
 
-      assert_includes queued_items, @model, "model was not queued"
+      assert_includes queued_models, @model, "model was not queued"
     end
 
     test 'dequeues a saved model' do
       @model.save
       @model.enqueue
       @model.dequeue
-      queued_items = Queueing.all.map { |queueing| queueing.queueable }
+      queued_models = Queueing.all.map { |queueing| queueing.queueable }
 
-      refute_includes queued_items, @model, "model was still queued"
+      refute_includes queued_models, @model, "model was still queued"
     end
 
     test 'knows if a model is queued' do
@@ -49,6 +49,7 @@ module QueueableTest
       @model.destroy
 
       assert_empty queueings
+      refute @model.queued?
     end
   end
 end
