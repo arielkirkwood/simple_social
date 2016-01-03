@@ -1,19 +1,22 @@
-Given(/an? (un)?queued post/) do |queued|
-  @post = queued ? create(:queued_post) : create(:unqueued_post)
+Given(/I have added these posts to my Library:$/) do |posts|
+  @posts = []
+  post_attributes = posts.hashes.map do |post_attrs|
+    @posts.append create(:post, post_attrs)
+  end
 end
 
-When(/^a user adds the post to the queue$/) do
+When(/^I add a post to the Queue$/) do
+  @post = @posts.first
   @post.enqueue
 end
 
-When(/^a user removes a post from the queue$/) do
-  @post.dequeue
+When(/^I remove a post from the Queue$/) do
+  # queue = ...
+  # @post = queue.something ...
+  # @post.dequeue
+  pending
 end
 
 Then(/^the post should( not)? be queued$/) do |negate|
   negate ? refute(@post.queued?) : assert(@post.queued?)
-end
-
-Then(/^it should be ordered last in the queue$/) do
-  assert_equal @post, Post.queue.last
 end
