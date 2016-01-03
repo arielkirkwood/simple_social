@@ -13,5 +13,13 @@ module QueueableTest
     test 'responds to queued?' do
       assert_respond_to @model, :queued?
     end
+
+    test 'enqueues a saved model' do
+      @model.save
+      @model.enqueue
+      queued_items = Queueing.all.map { |queueing| queueing.queueable }
+
+      assert_includes queued_items, @model, "model was not queued"
+    end
   end
 end

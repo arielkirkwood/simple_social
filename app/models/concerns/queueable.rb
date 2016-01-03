@@ -5,6 +5,7 @@ module Queueable
     has_many :queueings, as: :queueable
 
     def enqueue
+      queueings.create
     end
 
     def dequeue
