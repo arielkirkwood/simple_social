@@ -17,6 +17,11 @@ When(/^I remove a post from the Queue$/) do
   pending
 end
 
-Then(/^the post should( not)? be queued$/) do |negate|
-  negate ? refute(@post.queued?) : assert(@post.queued?)
+Then(/^I should( not)? see the post in the Queue$/) do |negated|
+  pending # express the regexp above with the code you wish you had
+  negated ? raise : raise
+end
+
+Then(/^the post should( not)? be queued$/) do |negated|
+  negated ? refute(@post.queued?) : assert(@post.queued?)
 end
